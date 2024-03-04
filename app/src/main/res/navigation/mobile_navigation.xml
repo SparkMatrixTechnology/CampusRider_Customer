@@ -22,9 +22,9 @@
         android:label="@string/help_center"
         tools:layout="@layout/fragment_food_help" />
     <fragment
-        android:id="@+id/complainFragment"
+        android:id="@+id/nav_complain"
         android:name="com.example.campusrider_customer.ComplainFragment"
-        android:label="fragment_complain"
+        android:label="Query"
         tools:layout="@layout/fragment_complain" />
 
 </navigation>
