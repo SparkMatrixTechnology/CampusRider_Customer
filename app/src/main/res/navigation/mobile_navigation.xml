@@ -21,5 +21,10 @@
         android:name="com.example.campusrider_customer.Food.ui.help.FoodHelpFragment"
         android:label="@string/help_center"
         tools:layout="@layout/fragment_food_help" />
+    <fragment
+        android:id="@+id/complainFragment"
+        android:name="com.example.campusrider_customer.ComplainFragment"
+        android:label="fragment_complain"
+        tools:layout="@layout/fragment_complain" />
 
 </navigation>

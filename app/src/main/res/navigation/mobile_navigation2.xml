@@ -27,4 +27,9 @@
         android:name="com.example.campusrider_customer.Grocery.ui.Order.OrderFragment"
         android:label="@string/my_order"
         tools:layout="@layout/fragment_order" />
+    <fragment
+        android:id="@+id/complainFragment"
+        android:name="com.example.campusrider_customer.ComplainFragment"
+        android:label="fragment_complain"
+        tools:layout="@layout/fragment_complain" />
 </navigation>

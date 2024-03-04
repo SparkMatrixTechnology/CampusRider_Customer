@@ -59,7 +59,7 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             acceptedProgress=findViewById(R.id.acceptedProgressBar);
             pickedProgress=findViewById(R.id.pickedProgressBar);
             deliveredProgress=findViewById(R.id.deliverdProgressBar);
-            statusText=findViewById(R.id.status);
+            statusText=findViewById(R.id.statusTextView);
             progressLayout=findViewById(R.id.progresLayout);
 
             order_id=getIntent().getIntExtra("id",0);
@@ -85,16 +85,28 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
                 statusText.setText("Your Order Placed Successfully");
             }
             else if(status.equals("Picked")){
+                placedProgress.setVisibility(View.VISIBLE);
+                placedProgress.incrementProgressBy(100);
+                acceptedProgress.setVisibility(View.VISIBLE);
+                acceptedProgress.incrementProgressBy(100);
                 pickedProgress.setVisibility(View.VISIBLE);
                 pickedProgress.incrementProgressBy(100);
                 statusText.setText("Your Order Has Been Picked By our Rider");
             }
             else if(status.equals("Delivered")){
+                placedProgress.setVisibility(View.VISIBLE);
+                placedProgress.incrementProgressBy(100);
+                acceptedProgress.setVisibility(View.VISIBLE);
+                acceptedProgress.incrementProgressBy(100);
+                pickedProgress.setVisibility(View.VISIBLE);
+                pickedProgress.incrementProgressBy(100);
                 deliveredProgress.setVisibility(View.VISIBLE);
                 deliveredProgress.incrementProgressBy(100);
                 statusText.setText("Deliverd");
             }
             else if(status.equals("Accepted")){
+                placedProgress.setVisibility(View.VISIBLE);
+                placedProgress.incrementProgressBy(100);
                 acceptedProgress.setVisibility(View.VISIBLE);
                 acceptedProgress.incrementProgressBy(100);
                 statusText.setText("Your Order Has Been Accepted");
@@ -126,7 +138,7 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             paymentText=findViewById(R.id.payment_type);
             placedProgress=findViewById(R.id.placedProgressBar);
             deliveredProgress=findViewById(R.id.deliveredProgressBar);
-            statusText=findViewById(R.id.status);
+            statusText=findViewById(R.id.statusTextView);
             progressLayout=findViewById(R.id.progresLayout);
 
             order_id=getIntent().getIntExtra("id",0);
@@ -151,6 +163,8 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             }
 
             else if(status.equals("Delivered")){
+                placedProgress.setVisibility(View.VISIBLE);
+                placedProgress.incrementProgressBy(100);
                 deliveredProgress.setVisibility(View.VISIBLE);
                 deliveredProgress.incrementProgressBy(100);
                 statusText.setText("Deliverd");
