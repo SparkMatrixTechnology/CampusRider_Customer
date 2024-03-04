@@ -49,6 +49,9 @@ public class ComplainFragment extends Fragment {
             public void onResponse(String response) {
                 if(response.equals("successful")){
                     Toast.makeText(getContext(),"Successful",Toast.LENGTH_SHORT).show();
+                    ComplainFragment fragment=new ComplainFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment,fragment).commit();
+
                 }else{
                     Toast.makeText(getContext(),"Unsuccessful",Toast.LENGTH_SHORT).show();
                 }
