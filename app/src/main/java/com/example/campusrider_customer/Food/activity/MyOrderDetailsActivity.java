@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -31,6 +33,7 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
     int order_id,total_price,delivery_fee,subtotal;
     String address,payment,shop_name,shop_address;
     RecyclerView rec;
+    LinearLayout progressLayout;
     ProgressBar placedProgress,acceptedProgress,pickedProgress,deliveredProgress;
     TextView orderText,shopNameText,addressText,subtotalText,deliveryText,billText,paymentText,statusText;
     ArrayList<MyOrderDetailsModel> orderDetailsModels;
@@ -57,6 +60,7 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             pickedProgress=findViewById(R.id.pickedProgressBar);
             deliveredProgress=findViewById(R.id.deliverdProgressBar);
             statusText=findViewById(R.id.status);
+            progressLayout=findViewById(R.id.progresLayout);
 
             order_id=getIntent().getIntExtra("id",0);
             total_price=getIntent().getIntExtra("total_price",0);
@@ -76,21 +80,28 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             paymentText.setText(payment);
 
             if(status.equals("Placed")){
-
-
-
+                placedProgress.setVisibility(View.VISIBLE);
+                placedProgress.incrementProgressBy(100);
+                statusText.setText("Your Order Placed Successfully");
             }
             else if(status.equals("Picked")){
-
+                pickedProgress.setVisibility(View.VISIBLE);
+                pickedProgress.incrementProgressBy(100);
+                statusText.setText("Your Order Has Been Picked By our Rider");
             }
             else if(status.equals("Delivered")){
-
+                deliveredProgress.setVisibility(View.VISIBLE);
+                deliveredProgress.incrementProgressBy(100);
+                statusText.setText("Deliverd");
             }
             else if(status.equals("Accepted")){
-
+                acceptedProgress.setVisibility(View.VISIBLE);
+                acceptedProgress.incrementProgressBy(100);
+                statusText.setText("Your Order Has Been Accepted");
             }
             else if(status.equals("Cancelled")){
-
+                progressLayout.setVisibility(View.GONE);
+                statusText.setText("Your Order Has Been Cancelled");
             }
 
             orderDetailsModels=new ArrayList<>();
@@ -116,6 +127,7 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             placedProgress=findViewById(R.id.placedProgressBar);
             deliveredProgress=findViewById(R.id.deliveredProgressBar);
             statusText=findViewById(R.id.status);
+            progressLayout=findViewById(R.id.progresLayout);
 
             order_id=getIntent().getIntExtra("id",0);
             total_price=getIntent().getIntExtra("total_price",0);
@@ -132,6 +144,22 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             deliveryText.setText("TK "+delivery_fee);
             billText.setText("TK "+total_price);
             paymentText.setText(payment);
+            if(status.equals("Placed")){
+                placedProgress.setVisibility(View.VISIBLE);
+                placedProgress.incrementProgressBy(100);
+                statusText.setText("Your Order Placed Successfully");
+            }
+
+            else if(status.equals("Delivered")){
+                deliveredProgress.setVisibility(View.VISIBLE);
+                deliveredProgress.incrementProgressBy(100);
+                statusText.setText("Deliverd");
+            }
+
+            else if(status.equals("Cancelled")){
+                progressLayout.setVisibility(View.GONE);
+                statusText.setText("Your Order Has Been Cancelled");
+            }
 
             orderDetailsModels=new ArrayList<>();
             orderDetailsAdapter=new MyOrderDetailsAdapter(getApplicationContext(),orderDetailsModels);
