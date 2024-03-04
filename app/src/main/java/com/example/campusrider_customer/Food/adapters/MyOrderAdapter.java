@@ -63,6 +63,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
                 intent.putExtra("payment",order.getPayment_type());
                 intent.putExtra("cost",order.getCost());
                 intent.putExtra("total_price",order.getTotal_price());
+                intent.putExtra("status",order.getOrder_status());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 context.startActivity(intent);
             }

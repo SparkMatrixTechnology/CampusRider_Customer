@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -26,11 +27,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MyOrderDetailsActivity extends AppCompatActivity {
-    String type;
+    String type,status;
     int order_id,total_price,delivery_fee,subtotal;
     String address,payment,shop_name,shop_address;
     RecyclerView rec;
-    TextView orderText,shopNameText,shopAddressText,addressText,subtotalText,deliveryText,billText,paymentText;
+    ProgressBar placedProgress,acceptedProgress,pickedProgress,deliveredProgress;
+    TextView orderText,shopNameText,addressText,subtotalText,deliveryText,billText,paymentText,statusText;
     ArrayList<MyOrderDetailsModel> orderDetailsModels;
     MyOrderDetailsAdapter orderDetailsAdapter;
 
@@ -50,6 +52,11 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             deliveryText=findViewById(R.id.delivery);
             billText=findViewById(R.id.totalbill_text);
             paymentText=findViewById(R.id.payment_type);
+            placedProgress=findViewById(R.id.placedProgressBar);
+            acceptedProgress=findViewById(R.id.acceptedProgressBar);
+            pickedProgress=findViewById(R.id.pickedProgressBar);
+            deliveredProgress=findViewById(R.id.deliverdProgressBar);
+            statusText=findViewById(R.id.status);
 
             order_id=getIntent().getIntExtra("id",0);
             total_price=getIntent().getIntExtra("total_price",0);
@@ -58,7 +65,7 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             address=getIntent().getStringExtra("address");
             payment=getIntent().getStringExtra("payment");
             shop_name=getIntent().getStringExtra("shop_name");
-            shop_address=getIntent().getStringExtra("shop_address");
+            status=getIntent().getStringExtra("status");
 
             orderText.setText("#"+order_id);
             shopNameText.setText(shop_name);
@@ -67,6 +74,24 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             deliveryText.setText("TK "+delivery_fee);
             billText.setText("TK "+total_price);
             paymentText.setText(payment);
+
+            if(status.equals("Placed")){
+
+
+
+            }
+            else if(status.equals("Picked")){
+
+            }
+            else if(status.equals("Delivered")){
+
+            }
+            else if(status.equals("Accepted")){
+
+            }
+            else if(status.equals("Cancelled")){
+
+            }
 
             orderDetailsModels=new ArrayList<>();
             orderDetailsAdapter=new MyOrderDetailsAdapter(getApplicationContext(),orderDetailsModels);
@@ -88,6 +113,9 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             deliveryText=findViewById(R.id.delivery);
             billText=findViewById(R.id.totalbill_text);
             paymentText=findViewById(R.id.payment_type);
+            placedProgress=findViewById(R.id.placedProgressBar);
+            deliveredProgress=findViewById(R.id.deliveredProgressBar);
+            statusText=findViewById(R.id.status);
 
             order_id=getIntent().getIntExtra("id",0);
             total_price=getIntent().getIntExtra("total_price",0);
@@ -95,6 +123,8 @@ public class MyOrderDetailsActivity extends AppCompatActivity {
             subtotal=getIntent().getIntExtra("cost",0);;
             address=getIntent().getStringExtra("address");
             payment=getIntent().getStringExtra("payment");
+            status=getIntent().getStringExtra("status");
+
 
             orderText.setText("#"+order_id);
             addressText.setText(address);
